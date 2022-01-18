@@ -17,12 +17,18 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    // thoughts: [thoughtSchema],
-    // friends: [userSchema],
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
+    friends: [this],
   },
   {
     toJSON: {
       getters: true,
+      virtuals: true,
     },
   }
 );

@@ -1,13 +1,14 @@
 {
   "name": "homework18---nosql",
   "version": "1.0.0",
-  "description": "## Your Task",
-  "main": "index.js",
+  "description": "NoSQL",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node utils/seed"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tommy White",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
