@@ -1,28 +1,23 @@
-const { Reaction } = require("../models");
+const { Thought } = require("../models");
 
 module.exports = {
   // Create a new reaction
-  createReaction(req, res) {
-    Reaction.create(req.body)
+  addReaction(req, res) {
+    const filter = { _id: req.params.thoughtId };
+    const update = { $addToSet: { reactions: req.body } };
+    Thought.findOneAndUpdate(filter, update, { runValidators: true, new: true })
       .then((reaction) => res.json(reaction))
       .catch((err) => res.status(500).json(err));
   },
 
   // Delete a reaction
-  deleteReactionById(req, res) {
-    Reaction.findOneAndRemove({ _id: req.params.reactionId })
-      .then((reaction) =>
-        !reaction
-          ? res.status(404).json({ message: "No such reaction exists" })
-          : Reaction.findOneAndUpdate(
-              { reactions: req.params.reactionId },
-              { $pull: { reactions: req.params.reactionId } },
-              { new: true }
-            )
-      )
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+  deleteReaction(req, res) {
+    console.log(req.params.thoughtId);
+    console.log(req.params.reactionId);
+    const filter = { _id: req.params.thoughtId };
+    const update = { $pull: { reactions: req.params.reactionId } };
+    Thought.findOneAndUpdate(filter, update, { runValidators: true, new: true })
+      .then((reaction) => res.json(reaction))
+      .catch((err) => res.status(500).json(err));
   },
 };

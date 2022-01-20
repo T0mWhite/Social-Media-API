@@ -124,23 +124,23 @@ connection.once("open", async () => {
   await seedUsers();
 
   // Populate the friends array after the users are created
-  async function addFriend() {
-    console.log("🌱 Giving Gabe a friend... 🌱");
-    const gabesFriend = ObjectId(users[2]._id);
-    await console.log(gabesFriend);
-    await console.log(gabesFriend._id);
-    const filter = { username: "GabeLuvsAdidas" };
-    const update = { $addToSet: { friends: gabesFriend._id } };
-    try {
-      User.findOneAndUpdate(filter, update, { runValidators: true, new: true });
-      console.log("🌻 Gabe made a new friend! 🌻");
-    } catch (error) {
-      console.log("💀 Gabe doesn't have a friend! 💀");
-      console.error(error);
-    }
-  }
+  // async function giveGabeAFriend() {
+  //   console.log("🌱 Giving Gabe a friend... 🌱");
+  //   const gabesFriend = users[2]._id;
+  //   await console.log(gabesFriend);
+  //   const gabe = users[0];
+  //   console.log(gabe.friends);
+  //   try {
+  //     gabe.friends.push(gabesFriend);
+  //     console.log(gabe.friends);
+  //     console.log("🌻 Gabe made a new friend! 🌻");
+  //   } catch (error) {
+  //     console.log("💀 Gabe doesn't have a friend! 💀");
+  //     console.error(error);
+  //   }
+  // }
 
-  await addFriend();
+  // await giveGabeAFriend();
 
   process.exit();
 });

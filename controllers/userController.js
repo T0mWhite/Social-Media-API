@@ -50,11 +50,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No such user exists" })
-          : User.findOneAndUpdate(
-              { users: req.params.userId },
-              { $pull: { users: req.params.userId } },
-              { new: true }
-            )
+          : res.json(user)
       )
       .catch((err) => {
         console.log(err);
@@ -68,11 +64,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No such user exists" })
-          : User.findOneAndUpdate(
-              { users: req.params.userId },
-              { $pull: { users: req.params.userId } },
-              { new: true }
-            )
+          : res.json(user)
       )
       .catch((err) => {
         console.log(err);
