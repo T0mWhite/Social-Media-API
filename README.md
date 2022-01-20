@@ -25,7 +25,7 @@ This application is an API and therefore does not have a front end. Please clone
 
 ![Example](./assets/Example.png)
 
-[Youtube Video of Application in Action](https://youtu.be/L1EJCYBBJR0) - Video TBA
+[Youtube Video of Application in Action](https://www.youtube.com/watch?v=oaTjeyasaxg)
 
   ## License
 
