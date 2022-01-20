@@ -15,7 +15,7 @@ module.exports = {
     console.log(req.params.thoughtId);
     console.log(req.params.reactionId);
     const filter = { _id: req.params.thoughtId };
-    const update = { $pull: { reactions: req.params.reactionId } };
+    const update = { $pull: { reactions: { _id: req.params.reactionId } } };
     Thought.findOneAndUpdate(filter, update, { runValidators: true, new: true })
       .then((reaction) => res.json(reaction))
       .catch((err) => res.status(500).json(err));
