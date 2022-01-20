@@ -2,7 +2,7 @@
 
   ## Description
   
-This an a skeleton for a social media app. It supplies users with thoughts and reactions to those thoughts, as well as the ability to have friends. All of these items are stored in MongoDB, a noSQL database, and loose relationships are tethered through mongoose.js.
+This is a skeleton for a social media app. It supplies users with thoughts and reactions to those thoughts, as well as the ability to have friends. All of these items are stored in MongoDB, a noSQL database, and loose relationships are tethered through mongoose.js.
   
   ## Table of Contents
   
