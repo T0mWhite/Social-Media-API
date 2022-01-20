@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 const thoughtSchema = require("./thought");
 
-// Schema to create user model
 const userSchema = new Schema(
   {
     username: {
