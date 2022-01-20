@@ -12,8 +12,6 @@ module.exports = {
 
   // Delete a reaction
   deleteReaction(req, res) {
-    console.log(req.params.thoughtId);
-    console.log(req.params.reactionId);
     const filter = { _id: req.params.thoughtId };
     const update = { $pull: { reactions: { _id: req.params.reactionId } } };
     Thought.findOneAndUpdate(filter, update, { runValidators: true, new: true })
