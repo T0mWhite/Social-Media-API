@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const connection = require("../config/connection");
+const { addFriend } = require("../controllers/friendController");
 const { User, Thought, Reaction } = require("../models");
 
 connection.on("error", (error) => error);
@@ -109,7 +110,7 @@ connection.once("open", async () => {
         },
         {
           username: "Mankind",
-          email: "threwunderatkeroffhellinacell@gmail.com",
+          email: "hell-in-a-cell@gmail.com",
           thoughts: [thoughts[3]],
         },
       ]);
@@ -119,16 +120,27 @@ connection.once("open", async () => {
       console.error(error);
     }
   }
-
   // Call the user seed
   await seedUsers();
 
   // Populate the friends array after the users are created
-  friends = [users[0], users[1], users[2]];
-  console.log(friends);
+  async function addFriend() {
+    console.log("🌱 Giving Gabe a friend... 🌱");
+    const gabesFriend = ObjectId(users[2]._id);
+    await console.log(gabesFriend);
+    await console.log(gabesFriend._id);
+    const filter = { username: "GabeLuvsAdidas" };
+    const update = { $addToSet: { friends: gabesFriend._id } };
+    try {
+      User.findOneAndUpdate(filter, update, { runValidators: true, new: true });
+      console.log("🌻 Gabe made a new friend! 🌻");
+    } catch (error) {
+      console.log("💀 Gabe doesn't have a friend! 💀");
+      console.error(error);
+    }
+  }
 
-  const addFriend = friends.push();
-
+  await addFriend();
 
   process.exit();
 });

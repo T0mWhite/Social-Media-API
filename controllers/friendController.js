@@ -3,13 +3,21 @@ const { User } = require("../models");
 module.exports = {
   // Add a freind to a user
   addFriend(req, res) {
-    User.updateOne(
-      {
-        _id: req.params.userId,
-    },
-    { key: "friends", value: `${req.params.friendId}` },
-      { runValidators: true, new: true }
-    )
+    const filter = { _id: req.params.userId };
+    const update = { $addToSet: { friends: req.params.friendId } };
+    console.log(req.params);
+    console.log(filter);
+    console.log(update);
+    User.findOneAndUpdate(filter, update, { runValidators: true, new: true })
+
+      // {
+      //   _id: req.params.userId,
+      // },
+      // {
+      //   $push: {friends: req.params.friendId},
+      // },
+      // { runValidators: true, new: true }
+
       // User.findOneAndUpdate(
       //   { _id: req.params.userId },
       //   {
