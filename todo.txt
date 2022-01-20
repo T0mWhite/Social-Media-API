@@ -1,5 +1,0 @@
-connection is working
-user controller is working~
-user routes linked to controller
-
-thoughtroutes needs getter method to format the timestam on query
